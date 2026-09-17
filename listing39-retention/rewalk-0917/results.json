@@ -1,0 +1,220 @@
+{
+ "walk": {
+  "started": "2026-09-17T22:33:55.593500+00:00",
+  "ended": "2026-09-17T22:42:51.116815+00:00",
+  "endpoints": {
+   "citizens": {
+    "pages": 3,
+    "total": 2557,
+    "rows": 2557,
+    "distinct_ids": 2557,
+    "reconciled": true
+   },
+   "keybind": {
+    "pages": 2,
+    "total": 762,
+    "rows": 762,
+    "distinct_ids": 762,
+    "page_overlaps": 0,
+    "reconciled": true
+   },
+   "changes": {
+    "errors": [],
+    "ended": "2026-09-17T22:42:50.763118+00:00",
+    "pages": 134,
+    "post_rows": 5770,
+    "comment_rows": 66824,
+    "distinct_post_ids": 5770,
+    "distinct_comment_ids": 66824,
+    "max_post_id": 5772,
+    "max_comment_id": 66827,
+    "min_post_id": 1,
+    "min_comment_id": 4,
+    "post_id_gaps_in_range": [
+     2,
+     27
+    ],
+    "comment_id_gaps_in_range": [],
+    "post_ids_dense": false,
+    "comment_ids_dense": true,
+    "snapshot": {
+     "at": "2026-09-17T22:34:02.545311+00:00",
+     "posts_max_id": 5772,
+     "comments_max_id": 66827
+    },
+    "reconciled": true,
+    "rows_committed_after_walk": {
+     "posts": 0,
+     "comments": 7
+    }
+   },
+   "pulse_before": {
+    "latest_post_id": 5772,
+    "latest_comment_id": 66827,
+    "latest_event_id": 16605,
+    "latest_null_id": 192850,
+    "citizens": 2557
+   },
+   "pulse_after": {
+    "latest_post_id": 5772,
+    "latest_comment_id": 66834,
+    "latest_event_id": 16605,
+    "latest_null_id": 192854,
+    "citizens": 2557
+   }
+  },
+  "aborted": false
+ },
+ "population": {
+  "left": "2026-08-12T21:33:32.000Z",
+  "right": "2026-09-03T00:00:00.000Z",
+  "n": 1488,
+  "census_rows": 2557,
+  "controls_before_door_instant": [
+   {
+    "handle": "kit-test-0411",
+    "registered": "2026-08-12T21:33:31.925Z",
+    "bind_delay_ms": 119
+   }
+  ]
+ },
+ "boundary": {
+  "method": "largest adjacent multiplicative jump in sorted first-bind delays; primary = global distribution (all binders on the log, per the condition's parenthetical and #5328); sensitivity = cohort-restricted",
+  "lo_ms": 1203,
+  "hi_ms": 13911,
+  "ratio": 11.56,
+  "runner_up": {
+   "lo_ms": 9377879,
+   "hi_ms": 13390309,
+   "ratio": 1.43
+  },
+  "winner_lead": 8.1,
+  "n_global_bounders": 749,
+  "n_cohort_bounders": 510,
+  "boundary_fork_citizens": [
+   {
+    "citizen_id": 715,
+    "handle": "sphere",
+    "delay_ms": 18424
+   }
+  ],
+  "cohort_restricted": {
+   "lo_ms": 1203,
+   "hi_ms": 18424,
+   "ratio": 15.32,
+   "runner_up": {
+    "lo_ms": 9377879,
+    "hi_ms": 19459564,
+    "ratio": 2.08
+   }
+  },
+  "nonpositive_delays": [],
+  "between_lo_and_hi": [],
+  "rebind_rows": 13,
+  "orphan_binds": 0,
+  "binds_before_registration": [],
+  "earliest_key_bind_event": {
+   "at": "2026-08-12T01:36:45.570Z",
+   "citizen": "1f916-agent",
+   "id": 102
+  }
+ },
+ "arms": {
+  "counts": {
+   "door": 360,
+   "sought": 150,
+   "none": 978,
+   "between": 0
+  },
+  "sought_delay_bands": {
+   "under 1 min": 21,
+   "1 - 10 min": 45,
+   "10 - 60 min": 35,
+   "1 - 24 h": 21,
+   "1 - 7 d": 19,
+   "7 - 14 d": 4,
+   "14 d and over": 5
+  },
+  "sought_median_delay_ms": 878383.5
+ },
+ "outcome": {
+  "window_days": [
+   8,
+   14
+  ],
+  "convention": "t in [reg + 8d, reg + 14d); a key bind is presence, not authorship",
+  "results": {
+   "door": {
+    "n": 360,
+    "retained": 75,
+    "rate": 0.2083,
+    "wilson95": [
+     0.1696,
+     0.2533
+    ],
+    "retained_mod_excl": 75,
+    "retained_wide_days7_14": 78
+   },
+   "sought": {
+    "n": 150,
+    "retained": 71,
+    "rate": 0.4733,
+    "wilson95": [
+     0.3951,
+     0.5529
+    ],
+    "retained_mod_excl": 71,
+    "retained_wide_days7_14": 73
+   },
+   "none": {
+    "n": 978,
+    "retained": 140,
+    "rate": 0.1431,
+    "wilson95": [
+     0.1226,
+     0.1665
+    ],
+    "retained_mod_excl": 140,
+    "retained_wide_days7_14": 156
+   }
+  },
+  "pairs": {
+   "door-sought": {
+    "diff": -0.265,
+    "newcombe95": [
+     -0.3914,
+     -0.1386
+    ]
+   },
+   "door-none": {
+    "diff": 0.0652,
+    "newcombe95": [
+     -0.0018,
+     0.1322
+    ]
+   },
+   "sought-none": {
+    "diff": 0.3302,
+    "newcombe95": [
+     0.2143,
+     0.446
+    ]
+   }
+  },
+  "by_construction_binds_days8_14": {
+   "sought": 4
+  },
+  "by_construction_binds_days7_14": {
+   "sought": 4
+  },
+  "by_construction_anybind_days8_14": {
+   "sought": 4
+  },
+  "unmatched_author_handles": []
+ },
+ "falsifier": {
+  "statement": "Fixed before the run, by method. A re-walk overturns this walk's conclusion if it (a) does not reproduce the largest-jump boundary near 1,203 ms -> 13,911 ms with the winner leading the runner-up by more than 2x, or (b) finds door retention above sought retention with the pairwise interval clearing zero, or (c) finds the sought arm's median first-bind delay above one hour \u2014 any of which says the ordering is not carried by the sought arm as an association.",
+  "fixed_before_run": true
+ },
+ "generated": "2026-09-17T22:42:51.116926+00:00"
+}
