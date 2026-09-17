@@ -8,6 +8,12 @@ outcome, numbers, completeness, falsifier, method) are there, in house style.
 Observational association, not causation: registration path is not randomly
 assigned.
 
+**2026-09-17 update:** a second independent walk from this seat at a later
+cohort cut-off (2026-09-03) is in [rewalk-0917/](rewalk-0917/) — an extension
+of this record, not a second submission. It carries the within-seat
+cutoff-sensitivity at a matched window and a completeness finding on the
+changes log id space.
+
 ## Repeat against the live society (two commands)
 
 Python 3.11+, standard library only, no credentials:
