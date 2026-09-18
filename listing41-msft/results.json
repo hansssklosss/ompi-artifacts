@@ -1,0 +1,116 @@
+{
+  "pinned_commit": "2f04a252f11b3d4caace8f182317534401d84b51",
+  "source_repo": "https://github.com/CVEProject/cvelistV5",
+  "selection_predicate": "cveMetadata.assignerShortName == \"microsoft\" AND datePublished[:7] in {2025-09 .. 2026-08} (UTC month as written)",
+  "cvss_path": "containers[\"adp\"][i] where providerMetadata.shortName == \"CISA-ADP\", then first metrics[j] with key \"cvssV3_1\", then cvssV3_1.baseScore",
+  "files_scanned": 106995,
+  "totals": {
+    "n": 2373,
+    "rated": 2,
+    "coverage_pct": 0.08,
+    "cisa_adp_container_present": 2372,
+    "ssvc_other_metrics": 2372,
+    "kev_other_metrics": 29,
+    "cna_container_cvss3_1": 2372,
+    "cna_credits_present": 0,
+    "cve_id_year_before_published_year": 0
+  },
+  "table": [
+    {
+      "month": "2025-09",
+      "n": 94,
+      "rated": 0,
+      "sum_base_score": 0.0,
+      "mean": null,
+      "cna_cvss3_1": 94
+    },
+    {
+      "month": "2025-10",
+      "n": 180,
+      "rated": 0,
+      "sum_base_score": 0.0,
+      "mean": null,
+      "cna_cvss3_1": 180
+    },
+    {
+      "month": "2025-11",
+      "n": 71,
+      "rated": 0,
+      "sum_base_score": 0.0,
+      "mean": null,
+      "cna_cvss3_1": 71
+    },
+    {
+      "month": "2025-12",
+      "n": 65,
+      "rated": 0,
+      "sum_base_score": 0.0,
+      "mean": null,
+      "cna_cvss3_1": 65
+    },
+    {
+      "month": "2026-01",
+      "n": 125,
+      "rated": 1,
+      "sum_base_score": 5.1,
+      "mean": 5.1,
+      "cna_cvss3_1": 125
+    },
+    {
+      "month": "2026-02",
+      "n": 61,
+      "rated": 0,
+      "sum_base_score": 0.0,
+      "mean": null,
+      "cna_cvss3_1": 61
+    },
+    {
+      "month": "2026-03",
+      "n": 97,
+      "rated": 0,
+      "sum_base_score": 0.0,
+      "mean": null,
+      "cna_cvss3_1": 96
+    },
+    {
+      "month": "2026-04",
+      "n": 181,
+      "rated": 1,
+      "sum_base_score": 9.8,
+      "mean": 9.8,
+      "cna_cvss3_1": 181
+    },
+    {
+      "month": "2026-05",
+      "n": 161,
+      "rated": 0,
+      "sum_base_score": 0.0,
+      "mean": null,
+      "cna_cvss3_1": 161
+    },
+    {
+      "month": "2026-06",
+      "n": 219,
+      "rated": 0,
+      "sum_base_score": 0.0,
+      "mean": null,
+      "cna_cvss3_1": 219
+    },
+    {
+      "month": "2026-07",
+      "n": 648,
+      "rated": 0,
+      "sum_base_score": 0.0,
+      "mean": null,
+      "cna_cvss3_1": 648
+    },
+    {
+      "month": "2026-08",
+      "n": 471,
+      "rated": 0,
+      "sum_base_score": 0.0,
+      "mean": null,
+      "cna_cvss3_1": 471
+    }
+  ]
+}
