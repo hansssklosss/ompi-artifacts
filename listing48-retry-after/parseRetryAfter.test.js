@@ -1,7 +1,10 @@
 // Tests for parseRetryAfter — Node 18+, node:test, no packages.
 // Run: node --test parseRetryAfter.test.js
-// Every expectation below is hand-derived; the four buyer examples from the
-// order brief are included verbatim (T1, T15, T16, T20).
+// Every expectation below is hand-derived. The buyer examples from the
+// order brief are included verbatim (my T1, T2, T3, T15, T16; the brief's
+// "soon" example sits in T14), and the buyer's three test probes published
+// on the thread (c70073, 2026-09-20) are included verbatim in T20-T22,
+// with the matching-weekday control as T23.
 
 "use strict";
 
@@ -112,9 +115,10 @@ test("T17 impossible calendar dates are rejected by month-length validation", ()
 test("T18 2^31-1 cap on computed wait: inclusive at 2038-01-19 03:14:07 UTC, null beyond", () => {
   // hand-derived: 2147483647 s after epoch = 24855 d + 11647 s = 2038-01-19 03:14:07 UTC.
   // nowMs = 0, so wait == 2147483647 s exactly -> valid at the cap.
-  // (The day-name token is not cross-checked against the calendar; see assumptions.)
-  assert.strictEqual(parseRetryAfter("Wed, 19 Jan 2038 03:14:07 GMT", 0), 2147483647);
-  assert.strictEqual(parseRetryAfter("Thu, 20 Jan 2038 03:14:07 GMT", 0), null); // +86400 s over the cap
+  // hand-derived weekdays: 24855 d after 1970-01-01 (Thu) -> (4 + 24855 mod 7) mod 7
+  // = (4 + 5) mod 7 = 2 = Tue; 2038-01-20 is therefore Wed.
+  assert.strictEqual(parseRetryAfter("Tue, 19 Jan 2038 03:14:07 GMT", 0), 2147483647);
+  assert.strictEqual(parseRetryAfter("Wed, 20 Jan 2038 03:14:07 GMT", 0), null); // +86400 s over the cap
 });
 
 test("T19 never throws: hostile arguments all yield null", () => {
@@ -124,4 +128,30 @@ test("T19 never throws: hostile arguments all yield null", () => {
   assert.strictEqual(parseRetryAfter("120", NaN), null);
   assert.strictEqual(parseRetryAfter("120", Infinity), null);
   assert.strictEqual(parseRetryAfter("120", undefined), null);
+});
+
+test("T20 buyer probe (c70073): impossible date rolls over -> null", () => {
+  // The buyer's exact probe string. V8's Date.parse rolls "31 Feb 2026" into
+  // March (a date that does not exist would read as a past one); the
+  // month-length validation rejects it before any parsing.
+  assert.strictEqual(parseRetryAfter("Tue, 31 Feb 2026 07:28:00 GMT", D(2026, 9, 20, 13, 55, 0)), null);
+});
+
+test("T21 buyer probe (c70073): seconds field 60 -> null", () => {
+  // The buyer's exact probe string. The grammar admits 00-59 only.
+  assert.strictEqual(parseRetryAfter("Wed, 21 Oct 2026 07:28:60 GMT", D(2026, 9, 20, 13, 55, 0)), null);
+});
+
+test("T22 buyer probe (c70073): wrong weekday -> null", () => {
+  // The buyer's round-trip criterion: rebuild the string from the parsed
+  // instant and compare; a wrong day-name does not round-trip. 2026-10-21
+  // is a Wednesday (hand-derived: 20747 d after epoch -> (4 + 20747 mod 7)
+  // mod 7 = (4 + 6) mod 7 = 3 = Wed), so "Thu" must be rejected.
+  assert.strictEqual(parseRetryAfter("Thu, 21 Oct 2026 07:28:00 GMT", D(2026, 9, 20, 13, 55, 0)), null);
+});
+
+test("T23 day-name cross-check control: the matching weekday is accepted", () => {
+  // hand-derived: 2026-10-21T07:28:00Z minus 2026-10-20T13:55:00Z =
+  // 86400 s - 6 h 27 m (23220 s) = 63180 s.
+  assert.strictEqual(parseRetryAfter("Wed, 21 Oct 2026 07:28:00 GMT", D(2026, 9, 20, 13, 55, 0)), 63180);
 });

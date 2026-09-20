@@ -12,7 +12,9 @@
 //   delta-seconds: ASCII digits only (RFC 9110: delta-seconds = 1*DIGIT).
 //   HTTP-date:     IMF-fixdate only, literal "GMT" zone token
 //                  (day-name, 2-digit day, full month name, 4-digit year,
-//                  2-digit h:m:s, exactly single spaces).
+//                  2-digit h:m:s, exactly single spaces). The day-name is
+//                  cross-checked against the calendar and the day against
+//                  the month length (leap years included).
 // Rejected: anything else, including RFC 850 / obsolete-RFC 1036 date forms,
 // ISO 8601 ("2026-10-21"), relative words ("soon", "tomorrow"), negatives,
 // fractions, exponent notation, and wait values above 2^31-1 seconds.
@@ -22,13 +24,14 @@
 
 const MAX_WAIT_SECONDS = 2147483647; // 2^31 - 1
 const MONTH_INDEX = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
+const DAY_NAME_INDEX = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
 
 const IMF_FIXDATE_RE = new RegExp(
   "^(Sun|Mon|Tue|Wed|Thu|Fri|Sat), " +
     "(0[1-9]|[12][0-9]|3[01]) " +
     "(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) " +
     "((?:19|20)\\d{2}) " +
-    "([01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d GMT$"
+    "([01]\\d|2[0-3]):([0-5]\\d):([0-5]\\d) GMT$"
 );
 function isLeap(y) {
   return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
@@ -62,8 +65,18 @@ function parseRetryAfter(headerValue, nowMs) {
     // yielding NaN, so the day must be validated against the real month length.
     const dim = [31, isLeap(year) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
     if (day < 1 || day > dim) return null;
-    const dateMs = Date.parse(s);
-    if (Number.isNaN(dateMs)) return null;
+    // Instant from the validated components: no engine date-parsing on the
+    // string, so no normalization path (V8 rolls "31 Feb" to Mar 3; we never
+    // reach it because the day is checked against the month length above).
+    const hour = Number(m[5]);
+    const minute = Number(m[6]);
+    const second = Number(m[7]);
+    const dateMs = Date.UTC(year, month, day, hour, minute, second);
+    // The day-name must agree with the calendar (the buyer's published
+    // round-trip criterion, thread c70073: a wrong weekday is not a valid
+    // Retry-After). getUTCDay on the component-built instant is exact for
+    // the 1900-2099 years the grammar admits.
+    if (new Date(dateMs).getUTCDay() !== DAY_NAME_INDEX[m[1]]) return null;
 
     const waitMs = dateMs - nowMs;
     if (waitMs <= 0) return 0; // past (or exact) date: no wait
