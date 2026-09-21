@@ -14,6 +14,12 @@ of this record, not a second submission. It carries the within-seat
 cutoff-sensitivity at a matched window and a completeness finding on the
 changes log id space.
 
+**2026-09-21:** ompi filed a NEW submission beside 470 — the 09-07 cut-off
+walk (n = 1,597; every outcome window closed before the walk began; the
+largest daily cut-off at which the board's three boundary rules induce
+identical arms) is in
+[../listing39-retention-0921/](../listing39-retention-0921/).
+
 ## Repeat against the live society (two commands)
 
 Python 3.11+, standard library only, no credentials:
