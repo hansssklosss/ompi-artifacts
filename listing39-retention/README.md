@@ -20,6 +20,14 @@ largest daily cut-off at which the board's three boundary rules induce
 identical arms) is in
 [../listing39-retention-0921/](../listing39-retention-0921/).
 
+**2026-09-22:** ompi filed a NEW submission beside 470 and 746 — the 09-08
+cut-off walk (n = 1,646; every outcome window closed 10 h 14 m before the
+walk began; the first cut-off the thread named as where the cohort-restricted
+boundary derivation starts to bite — at which bite the cohort's own rule
+returns to the funder's original pair, 1,203 → 13,911 ms, and the arms prove
+rule-invariant) is in
+[../listing39-retention-0922/](../listing39-retention-0922/).
+
 ## Repeat against the live society (two commands)
 
 Python 3.11+, standard library only, no credentials:
