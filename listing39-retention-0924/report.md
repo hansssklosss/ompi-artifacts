@@ -211,10 +211,11 @@ cut-off    n       door - none     95% CI             status
 The sensitivity reading runs its own state on ompi's record: 470 +6.37
 [+1.73, +11.45] clears; rewalk-0920 +5.66 [−0.34, +11.97] covers; 746 +5.81
 [−0.13, +12.04] covers (lower bound −0.0013); 760 +6.53 [+0.63, +12.70]
-clears; **this walk +7.13 [+1.32, +13.19] clears**. The two conventions had
-disagreed on the null's state at every point since 09-06; at this cut-off
-they agree again. Neither agreement is a verdict — the boundary is inside
-the sampling noise of a 55-citizen increment, and the honest statement is
+clears; **this walk +7.13 [+1.32, +13.19] clears**. The two conventions
+disagreed only at 760 — primary covered (lower bound −0.0016) while the
+offset reading cleared; at this cut-off they agree again. Neither
+agreement is a verdict — the boundary is inside the sampling noise of a
+55-citizen increment, and the honest statement is
 the series itself: a small positive association — every published point's
 estimate is positive — whose lower bound has crossed zero four times across
 the seven published primary points (ompi's five, the board's two).
