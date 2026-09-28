@@ -1,0 +1,82 @@
+# Required table — stated source: CISA-ADP "Vulnrichment" ADP container
+# containers.adp[?providerMetadata.shortName=='CISA-ADP'].metrics[?cvssV*].baseScore
+Predicate: assignerShortName=='microsoft', state=='PUBLISHED', datePublished in [2025-09-01, 2026-09-01) UTC.
+
+| month | n | rated | sum(base) | mean |
+|---|---|---|---|---|
+| 2025-09 | 94 | 0 | 0.0 | - |
+| 2025-10 | 180 | 0 | 0.0 | - |
+| 2025-11 | 71 | 0 | 0.0 | - |
+| 2025-12 | 65 | 0 | 0.0 | - |
+| 2026-01 | 125 | 1 | 5.1 | 5.10 |
+| 2026-02 | 61 | 0 | 0.0 | - |
+| 2026-03 | 96 | 0 | 0.0 | - |
+| 2026-04 | 181 | 1 | 9.8 | 9.80 |
+| 2026-05 | 161 | 0 | 0.0 | - |
+| 2026-06 | 219 | 0 | 0.0 | - |
+| 2026-07 | 648 | 0 | 0.0 | - |
+| 2026-08 | 471 | 0 | 0.0 | - |
+
+TOTALS: n=2372 rated=2 sum=14.9 mean_over_rated=7.45
+
+# Supplementary table — vendor CNA-provided cvssV3_1 (NOT the stated source)
+# containers.cna.metrics[?cvssV*].baseScore; shown so the merged panel has data;
+# the required table above does not use it.
+Same population, same month bucket.
+
+| month | n | rated | sum(base) | mean |
+|---|---|---|---|---|
+| 2025-09 | 94 | 94 | 682.5 | 7.26 |
+| 2025-10 | 180 | 180 | 1291.5 | 7.17 |
+| 2025-11 | 71 | 71 | 529.0 | 7.45 |
+| 2025-12 | 65 | 65 | 494.9 | 7.61 |
+| 2026-01 | 125 | 125 | 901.3 | 7.21 |
+| 2026-02 | 61 | 61 | 451.5 | 7.40 |
+| 2026-03 | 96 | 96 | 735.8 | 7.66 |
+| 2026-04 | 181 | 181 | 1335.1 | 7.38 |
+| 2026-05 | 161 | 161 | 1247.0 | 7.75 |
+| 2026-06 | 219 | 219 | 1591.0 | 7.26 |
+| 2026-07 | 648 | 648 | 4783.7 | 7.38 |
+| 2026-08 | 471 | 471 | 3472.6 | 7.37 |
+
+TOTALS: n=2372 rated=2372 sum=17515.9 mean_over_rated=7.38
+
+## Completeness
+id years scanned: 2024, 2025, 2026
+files_scanned=149535 parse_errors=0
+microsoft records any state/date: 5302
+microsoft PUBLISHED any date: 5301
+in-window PUBLISHED: 2372
+in-window PUBLISHED by id-year: {'2025': 411, '2026': 1961}
+in-window non-PUBLISHED microsoft records (excluded): [('CVE-2026-32187.json', 'REJECTED', '2026-03-27T20:42:05.339Z', None)]
+CISA-ADP containers in-window: 2372 (SSVC-only: 2370, with CVSS base score: 2)
+other ADP providers in-window: {'CVE': 40, 'redhat-SADP': 12}
+CISA-ADP coverage of in-window records: 0.08% (2/2372)
+vendor CNA cvss in-window: 2372/2372 (100.00%)
+CISA-ADP-scored records (file, month, key, score, vector):
+  CVE-2026-21223.json 2026-01 cvssV3_1 5.1 CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N
+  CVE-2026-32186.json 2026-04 cvssV3_1 9.8 CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+
+## Cadence (LIMITS input a)
+published on a Tuesday: 2079/2372 (87.6%)
+published on the month's 2nd Tuesday (Patch Tuesday): 2070/2372 (87.3%)
+2025-09 top days: 9:80, 4:5, 18:3
+2025-10 top days: 14:167, 9:8, 23:3
+2025-11 top days: 11:63, 20:6, 26:2
+2025-12 top days: 9:56, 18:7, 5:1
+2026-01 top days: 13:112, 22:8, 16:2
+2026-02 top days: 10:54, 5:4, 17:2
+2026-03 top days: 10:78, 19:11, 5:5
+2026-04 top days: 14:163, 23:7, 2:6
+2026-05 top days: 12:125, 22:13, 7:12
+2026-06 top days: 9:200, 19:7, 4:6
+2026-07 top days: 14:570, 3:43, 24:10
+2026-08 top days: 11:402, 20:21, 6:17
+
+## Reserve-to-publish lag (LIMITS input a; completeness of id-year tail)
+in-window with dateReserved: 2372; with dateAssigned: 0
+dateReserved->datePublished lag (days): median=34 p90=59 max=271
+lags >30d: 1391; >90d: 57; >180d: 6
+## Attribution (LIMITS input b)
+cna.credits present: 0/2372; cna.references present: 2372/2372
+
