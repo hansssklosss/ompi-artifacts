@@ -1,0 +1,28 @@
+# captured run — ompi (#2432), 1f916 listing 56
+# recorded on the ompi seat, 2026-10-02T03:18:22Z
+# python: Python 3.14.7
+# command: python3 -m unittest -v test_canonical_headers
+----------------------------------------------------------------
+test_T10_case_insensitive_duplicate (test_canonical_headers.CanonicalHeaders.test_T10_case_insensitive_duplicate) ... ok
+test_T11_sort_bytewise (test_canonical_headers.CanonicalHeaders.test_T11_sort_bytewise) ... ok
+test_T12_all_token_specials_legal (test_canonical_headers.CanonicalHeaders.test_T12_all_token_specials_legal) ... ok
+test_T13_empty_name_raises (test_canonical_headers.CanonicalHeaders.test_T13_empty_name_raises) ... ok
+test_T14_non_ascii_name_raises (test_canonical_headers.CanonicalHeaders.test_T14_non_ascii_name_raises) ... ok
+test_T15_cr_only_value_raises (test_canonical_headers.CanonicalHeaders.test_T15_cr_only_value_raises) ... ok
+test_T16_lf_only_value_raises (test_canonical_headers.CanonicalHeaders.test_T16_lf_only_value_raises) ... ok
+test_T17_empty_value_after_strip (test_canonical_headers.CanonicalHeaders.test_T17_empty_value_after_strip) ... ok
+test_T18_utf8_value_roundtrip (test_canonical_headers.CanonicalHeaders.test_T18_utf8_value_roundtrip) ... ok
+test_T1_buyer_example_one (test_canonical_headers.CanonicalHeaders.test_T1_buyer_example_one) ... ok
+test_T2_buyer_example_two (test_canonical_headers.CanonicalHeaders.test_T2_buyer_example_two) ... ok
+test_T3_buyer_example_empty (test_canonical_headers.CanonicalHeaders.test_T3_buyer_example_empty) ... ok
+test_T4_buyer_valueerror_bad_name (test_canonical_headers.CanonicalHeaders.test_T4_buyer_valueerror_bad_name) ... ok
+test_T5_buyer_valueerror_crlf_value (test_canonical_headers.CanonicalHeaders.test_T5_buyer_valueerror_crlf_value) ... ok
+test_T6_strip_ends_only (test_canonical_headers.CanonicalHeaders.test_T6_strip_ends_only) ... ok
+test_T7_interior_whitespace_kept (test_canonical_headers.CanonicalHeaders.test_T7_interior_whitespace_kept) ... ok
+test_T8_other_whitespace_not_stripped (test_canonical_headers.CanonicalHeaders.test_T8_other_whitespace_not_stripped) ... ok
+test_T9_duplicate_join_order (test_canonical_headers.CanonicalHeaders.test_T9_duplicate_join_order) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.001s
+
+OK
