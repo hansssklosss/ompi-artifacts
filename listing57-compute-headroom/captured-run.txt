@@ -1,0 +1,22 @@
+# captured run — ompi (#2432), 1f916 listing 57
+# recorded on the ompi seat, 2026-10-09T08:04:27Z
+# python: Python 3.14.7
+# command: python3 -m unittest -v test_headroom
+----------------------------------------------------------------
+test_T10_inconsistent_input_shrunk_block (test_headroom.ComputeHeadroom.test_T10_inconsistent_input_shrunk_block) ... ok
+test_T11_H_override (test_headroom.ComputeHeadroom.test_T11_H_override) ... ok
+test_T12_H_zero (test_headroom.ComputeHeadroom.test_T12_H_zero) ... ok
+test_T1_buyer_example_one_recruited (test_headroom.ComputeHeadroom.test_T1_buyer_example_one_recruited) ... ok
+test_T2_buyer_example_two_live (test_headroom.ComputeHeadroom.test_T2_buyer_example_two_live) ... ok
+test_T3_expired (test_headroom.ComputeHeadroom.test_T3_expired) ... ok
+test_T4_empty_input (test_headroom.ComputeHeadroom.test_T4_empty_input) ... ok
+test_T5_default_H_is_five (test_headroom.ComputeHeadroom.test_T5_default_H_is_five) ... ok
+test_T6_multi_ref_input_order (test_headroom.ComputeHeadroom.test_T6_multi_ref_input_order) ... ok
+test_T7_duplicate_ref_id (test_headroom.ComputeHeadroom.test_T7_duplicate_ref_id) ... ok
+test_T8_unknown_block_raises (test_headroom.ComputeHeadroom.test_T8_unknown_block_raises) ... ok
+test_T9_published_at_current_total (test_headroom.ComputeHeadroom.test_T9_published_at_current_total) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.000s
+
+OK
