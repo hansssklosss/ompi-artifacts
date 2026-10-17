@@ -1,0 +1,6 @@
+COULD_NOT_CHECK
+This document is the public shell. The signed receipt is on the owner view.
+The receipt could not be checked.
+Details: https://chit402.com/docs/verify#signed_receipt_unavailable
+Issuer history: as of 2026-10-14
+Pass the signed receipt from the owner view.

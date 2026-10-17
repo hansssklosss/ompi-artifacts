@@ -1,0 +1,14 @@
+OK   T1 proof: flip one hex digit of proof[0]
+OK   T2 signed_head: flip one signature char
+OK   T3 head payload: swap root for another 64-hex
+OK   T4 leaf_hash: replace with a valid 64-hex of another leaf
+OK   T5 issued_at: move before not_before
+OK   T6 proof: drop one step (wrong length for index/size)
+OK   T7 history: flip one entry_hash digit
+OK   T8 history: flip one signature bit
+OK   T9 history: not_after receipt (not_before moves past issued_at)
+OK   T10 jwks: flip one key-coordinate digit
+OK   T11 inclusion endpoint: leaf_index 30 -> 29
+OK   T12 epoch record: flip one signature bit
+
+NEGATIVES: ALL FIRE

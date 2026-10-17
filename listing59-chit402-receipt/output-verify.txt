@@ -1,0 +1,61 @@
+== 0. document shapes ==
+PASS  shell schema  — chit402.receipt_shell.v1
+PASS  shell unsigned flag
+PASS  history schema
+== 1. key pinning ==
+PASS  jwks has one key
+PASS  jwks key kty/crv/alg
+PASS  jwks kid == head kid  — IvFpmC-vPhkY_v0vidsrWVT9uzlE5XWKZgAEOeJTq1Q
+PASS  RFC 7638 thumbprint == kid  — IvFpmC-vPhkY_v0vidsrWVT9uzlE5XWKZgAEOeJTq1Q
+PASS  thumbprint == verifier's hard-coded offline pin (jws.ts:34-36)  — pin is in the public package source, not fetched live
+== 2. issuer-history integrity ==
+PASS  entry hash chain (SHA-256 of JCS(entry sans entry_hash))
+PASS  head_hash == last entry_hash  — 349d7bb495bad55aaa25d05ee91134575e6e7d300795b37b41f4bcf29af80f0e
+PASS  history entry jwk == jwks key
+PASS  history issuer_jwk == jwks key
+PASS  history sealed-snapshot JWS verifies (pinned key)  — eyJhbGciOiJFUzI1NiIsInR5cCI6ImNoaXQ0MDIt…
+PASS  history payload: entry_count == 1, head_hash matches
+PASS  history payload sealed (version+seq present)  — version=2 seq=2
+== 3. signed_head JWS ==
+PASS  signed_head ES256 verifies against the pinned key
+PASS  head schema/payload_version
+PASS  head kid
+== 4. Merkle inclusion (index brute-force, public shell) ==
+PASS  exactly one index in 0..30 folds to the signed root  — winners=[30]
+    leaf_index = 30; sha256(leaf_hash) self-check: e2f94d75e46528b5…
+== 4b. live inclusion endpoint cross-check (public log) ==
+PASS  endpoint leaf == shell leaf_hash
+PASS  endpoint proof == shell proof (byte-identical)
+PASS  endpoint root == signed head root
+PASS  endpoint tree_size == head tree_size
+PASS  endpoint leaf_index == the unique brute-force winner  — endpoint 30
+PASS  endpoint head JWS == shell signed_head JWS (byte-identical)
+== 5. epoch chain to pinned epoch-1 final root ==
+PASS  head epoch is 2
+PASS  prev_epoch_root == pinned EPOCH1_FINAL_ROOT
+PASS  prev_epoch_size == pinned EPOCH1_FINAL_SIZE (4)
+PASS  prev_root is a 64-hex root (size-30 head, anchored separately)
+    -- signed epoch record (the 'previous' bridge, /v1/receipts/tree/epoch) --
+PASS  epoch record issuer JWS verifies (pinned key)
+PASS  record epoch 1: closed, final_root == pinned, size 4, genesis == pinned
+PASS  record epoch 2: open, opening_root == pinned EPOCH2_OPENING_ROOT
+PASS  record epoch 2 links to epoch 1 final (root+size)
+PASS  record epoch 2 opening_root == head prev_root chain is consistent (head.prev_root is a later in-epoch head, distinct from opening)
+== 6. key window for issued_at ==
+PASS  status active, not revoked
+PASS  not_before 2026-09-04T08:52:05Z <= issued_at 2026-10-17T14:46:00.000Z
+PASS  not_after null (open-ended) -> no upper bound
+== 7. on-chain, public Base RPC ==
+    rpc=https://mainnet.base.org
+PASS  payment tx exists and succeeded
+PASS  USDC Transfer event to the receipt payee  — 1 matching log(s)
+PASS  transfer amount == 2000 atomic  — on-chain 2000
+    payer in tx: 0x9f8951cb8b060f52fdf87297b3c5b00f7aa18f52  (owner-view field; see TRUST)
+PASS  anchor tx exists and succeeded
+PASS  anchor tx from == pinned anchor wallet (anchor-trust.ts:38)  — 0x1844d1f5fe42aff1cce6f776514fd40374079582
+PASS  anchor tx calldata carries the signed head root  — calldata=0x45eac114814e074a06c789f83b45901cf3fc5e9b2de5ac979698ae5f9dc4a34e
+PASS  anchor tx is a self-transfer (from == to == pinned wallet)  — to=0x1844d1f5fe42aff1cce6f776514fd40374079582 value=0x0
+PASS  anchor tx target holds NO code (EOA, not a contract) — see REVIEW B1  — code='0x'
+
+== RESULT: 45 pass, 0 fail ==
+ALL CHECKS PASS

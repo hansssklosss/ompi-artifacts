@@ -1,0 +1,17 @@
+HTTP/2 200 
+alt-svc: h3=":443"; ma=2592000
+cache-control: public, max-age=300
+content-type: application/json; charset=utf-8
+date: Sat, 17 Oct 2026 17:32:35 GMT
+etag: W/"8b9-OFkp6N/0uFzpQC1FdEVh+5gdeyc"
+referrer-policy: no-referrer
+via: 1.1 Caddy
+x-chit-hash-alg: sha256
+x-chit-history-hash: b5ecff74a0c5a493268c100ab164b641a5cb2bed8792d0526a997d9d5aa7b07d
+x-chit-history-seq: 2
+x-chit-history-version: 2
+x-content-type-options: nosniff
+x-dns-prefetch-control: off
+x-frame-options: DENY
+content-length: 2233
+
