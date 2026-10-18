@@ -1,0 +1,7 @@
+2239bfd05cd34735ed3f37cc3baf4d5236bb890f40f677aeab1e71b33f5fd5db  npm/chit402-verify-0.4.2.tgz
+c5dcf7e6f3c10148e5ad6d0768b1f91d9490b7c1d37956855fd9fc1bf6dd176a  npm/chit402-verify-0.4.4.tgz
+54b8ee85a80dfaa3f40733b63d5c4e7de0e608507b707125bc5b81eb500c978f  npm/chit402-verify-0.4.5.tgz
+c228bfe6f3ecf27febfeb57a0d76582849755675700a3b05fea9f7689d470076  npm/chit402-verify-0.4.7.tgz
+f12a8aeccd22b5cb815e0bbe88864fb199d40038d8eeca69c35d33d35cd1685e  npm/chit402-verify-0.4.8.tgz
+github.com/XFuel-Lab/chit402  commit 89577f3a7c6459a6a2d233734ec5bd65d1679ddb (2026-10-18)
+npm registry: ethers@6.17.0 resolved for all five packages

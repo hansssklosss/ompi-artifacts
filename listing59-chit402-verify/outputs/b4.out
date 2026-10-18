@@ -1,0 +1,5 @@
+1. leaf_index present anywhere in the shell bytes? false
+2. shell.inclusion keys: leaf_hash, proof, signed_head
+3. brute force: indices that fold to the signed root: 30
+4. /v1/receipts/:id/inclusion names leaf_index: 30 (unique solution: yes )
+B4 FIRES: the shell alone does not name the index; a second endpoint or a full-tree brute force is required.

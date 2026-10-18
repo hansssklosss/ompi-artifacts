@@ -1,0 +1,6 @@
+sha256 format=json   : e26f7df27eba2a3a1f82f40c44fddc5d9dd47887096b71af56d88e941fc2cfe2
+sha256 format=auditor: e26f7df27eba2a3a1f82f40c44fddc5d9dd47887096b71af56d88e941fc2cfe2
+OpenAPI format enum   : ['json', 'auditor']
+OpenAPI description   : Response format: json (machine), auditor (policy + totals), or HTML (default)
+byte-identical        : True
+B2 FIRES: the documented auditor view is not served

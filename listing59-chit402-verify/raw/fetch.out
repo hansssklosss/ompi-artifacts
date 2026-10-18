@@ -1,0 +1,4 @@
+receipt.json  http=200
+jwks.json  http=200
+issuer-history.json  http=200
+inclusion.json  http=200

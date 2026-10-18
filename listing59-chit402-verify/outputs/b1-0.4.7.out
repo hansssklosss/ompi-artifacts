@@ -1,0 +1,21 @@
+{
+ "forged": {
+  "overall": "verified",
+  "errors": [],
+  "issuer_signature": {
+   "valid": true,
+   "trust": "jwks",
+   "kid": "IvFpmC-vPhkY_v0vidsrWVT9uzlE5XWKZgAEOeJTq1Q"
+  }
+ },
+ "unsigned_control": {
+  "overall": "partial",
+  "errors": [],
+  "issuer_signature": {
+   "valid": false,
+   "trust": null,
+   "kid": null
+  }
+ }
+}
+B1 FIRES: a tree-head JWS is accepted as the receipt issuer signature; a document with no signed economic claims verifies.

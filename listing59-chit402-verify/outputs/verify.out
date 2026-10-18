@@ -1,0 +1,73 @@
+== 0. Manifest pin (if fetch.sh was run) ==
+  PASS  sha256 raw/receipt.json: e26f7df27eba2a3a1f82f40c44fddc5d9dd47887096b71af56d88e941fc2cfe2
+  PASS  sha256 raw/jwks.json: 6c439e8c3efd75d18c009738f8c177649e7282ffaec4ba005341657c1c47649c
+  PASS  sha256 raw/issuer-history.json: b5ecff74a0c5a493268c100ab164b641a5cb2bed8792d0526a997d9d5aa7b07d
+  PASS  sha256 raw/inclusion.json: 1845c12e0587b69c4d60f1a328f89a88994286fb5ebe3c5d78f69518d97f129e
+== 1. JWS header ==
+  PASS  alg ES256: ES256
+  PASS  typ chit402-tree-head+jwt: chit402-tree-head+jwt
+  PASS  kid present: IvFpmC-vPhkY_v0vidsrWVT9uzlE5XWKZgAEOeJTq1Q
+== 2. Key identity: RFC 7638 ==
+  PASS  JWKS has exactly one key: 1 key(s)
+  PASS  JWKS thumbprint == kid: IvFpmC-vPhkY_v0vidsrWVT9uzlE5XWKZgAEOeJTq1Q
+  PASS  history-entry thumbprint == kid: IvFpmC-vPhkY_v0vidsrWVT9uzlE5XWKZgAEOeJTq1Q
+  PASS  JWKS key == history key (same coordinates)
+== 3. ES256 signatures (offline) ==
+  PASS  tree-head JWS verifies under the JWKS key
+  PASS  issuer-history JWS verifies under the same key
+  PASS  history JWS typ is chit402-issuer-history+jwt: chit402-issuer-history+jwt
+== 4. Issuer-history chain + JCS ==
+  PASS  single entry
+  PASS  entry_hash == SHA-256(JCS(entry minus entry_hash)) — also proves this JCS implementation: 349d7bb495bad55aaa25d05ee91134575e6e7d300795b37b41f4bcf29af80f0e vs 349d7bb495bad55aaa25d05ee91134575e6e7d300795b37b41f4bcf29af80f0e
+  PASS  head_hash == last entry_hash
+  PASS  first entry prev_hash is null
+  PASS  signed entry_count == 1: 1
+  PASS  signed head_hash matches
+  PASS  signed version/seq match the document: v2/s2 vs v2/s2
+== 5. Key window ==
+  PASS  issued_at >= not_before: 2026-10-17T14:46:00.000Z vs 2026-09-04T08:52:05Z
+  PASS  published_at >= not_before: 2026-10-18T02:00:15.789Z
+  PASS  not_after open (null)
+  PASS  status active, not revoked: active/null
+== 6. Merkle inclusion (RFC 9162) ==
+  PASS  leaf_hash present on the shell: 24685dd1ea5dec24a43ded42036a9a3f00591a661aadbf723ff3a3c14b70700d
+  PASS  shell leaf_hash == inclusion.leaf
+  PASS  leaf_index < tree_size: 30 / 34
+  PASS  fold(leaf, index, size) == root: b19c4d34d54c47be11525a8d02c6161d4b16b41d16eb5dbfc4a56eadf6e6ad6f vs b19c4d34d54c47be11525a8d02c6161d4b16b41d16eb5dbfc4a56eadf6e6ad6f
+  PASS  root equal across shell / JWS claims / inclusion endpoint
+  PASS  proof position labels agree with the index-chosen sides
+  PASS  tree_size 34 consistent in shell, claims, inclusion
+== 7. Epoch link (against the public verifier pinned constants) ==
+  PASS  epoch is 2: 2
+  PASS  prev_epoch_root == pinned EPOCH1_FINAL_ROOT
+  PASS  prev_epoch_size == pinned EPOCH1_FINAL_SIZE (4)
+== 8. Anchor claims vs on-chain (see check-chain.sh) ==
+  PASS  calldata == signed root bytes (0x-prefixed)
+  PASS  anchor_from == anchors.base.from: 0x1844d1f5fe42aff1cce6f776514fd40374079582
+  PASS  published_at within clock_tolerance_s.base of the anchor block ts: 59s vs 300s
+  PASS  anchor_status anchored, receipt_confirmed true (self-asserted; chain facts in check-chain.sh)
+== 9. Trust points (steps where checking was not possible) ==
+  T1 bootstrap: the KMS key is trusted by its RFC 7638 kid + the self-signed history document;
+     the root of trust is the key first deployed 2026-09-04 (not_before_note), out of band.
+  T2 the shell is unsigned (unsigned: true): amount_gross/amount_settled/pay_to/payment_tx are
+     not covered by any public signature. /preimage says "payload_hash is over the owner-held bytes".
+     The economic facts are corroborated on-chain instead (check-chain.sh, two RPCs).
+  T3 leaf = SHA256(0x00 || task_id|row_hash); row_hash is owner-view only (shell.ts), so the
+     task_id -> leaf binding is NOT recomputable from public material. The inclusion endpoint
+     asserts it (task_id + leaf agree); no public attestation is served on this shell.
+  T4 the anchor is a self-send (to == from == anchor wallet) whose calldata is the raw 32-byte
+     root: nothing on chain validates the calldata format. The anchor wallet is the trust point.
+  T5 on-chain facts rest on public Base RPCs (two independent providers agree).
+  T6 the solana anchor is pending (day_already_anchored); its prior_signature is not checked here.
+  T7 my fold/JCS/ES256 implementations are cross-checked against published values (entry_hash,
+     fold->root); an implementation bug shared with the issuer would not be caught.
+== 10. Falsifier self-tests (the checker must reject its own tampering) ==
+  PASS  S1 flipped signature bit is rejected
+  PASS  S2 flipped leaf byte does not fold to the root: c3ef4b005122936cb52cbd011d0f8db3736acf9824b1d032a0edf00c0323ec8e
+  PASS  S3 history entry +1 day breaks entry_hash
+  PASS  S4 unknown kid has no JWKS key
+  PASS  S5 swapped position label fails positionAgrees
+  PASS  S6 wrong leaf index does not fold to the root: e5c6791383bf94e9a6464c9fbb8b58f4ec0a0379762c98efc325a21b9ea3ae5d
+  INFO  RFC9162: size-33 fold at this index is EQUAL to the signed root — the fold does not pin tree_size for this leaf; the signed head does
+
+ALL CHECKS PASS

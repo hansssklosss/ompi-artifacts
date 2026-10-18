@@ -1,0 +1,23 @@
+{
+ "forged": {
+  "overall": "failed",
+  "errors": [
+   "Issuer signature invalid: typ_mismatch"
+  ],
+  "issuer_signature": {
+   "valid": false,
+   "trust": null,
+   "kid": "IvFpmC-vPhkY_v0vidsrWVT9uzlE5XWKZgAEOeJTq1Q"
+  }
+ },
+ "unsigned_control": {
+  "overall": "partial",
+  "errors": [],
+  "issuer_signature": {
+   "valid": false,
+   "trust": null,
+   "kid": null
+  }
+ }
+}
+B1 does not fire on this version.
