@@ -32,8 +32,9 @@ Full captured outputs of every run of 2026-10-18 are in `outputs/`; the fetched 
 
 The KMS-signed object inside this receipt is the **tree-head JWS** at `inclusion.signed_head.signature`
 (compact JWS, header `{alg: ES256, typ: chit402-tree-head+jwt, kid}`). The shell itself is
-`unsigned: true`; its economic fields are corroborated on-chain (§9). `verify.mjs` runs ten sections;
-the captured run (`outputs/verify.out`) passes all 46 checks and all 6 falsifier self-tests:
+`unsigned: true`; its economic fields are corroborated on-chain (§9). `verify.mjs` prints 46 PASS
+lines in the captured run (`outputs/verify.out`): 4 manifest pins + 36 verification checks + 6
+falsifier self-tests, all passing:
 
 1. **JWS header** — `alg ES256`, `typ chit402-tree-head+jwt`, `kid` present.
 2. **Key identity (RFC 7638)** — the JWKS holds exactly one key; its thumbprint
