@@ -1,0 +1,31 @@
+== Base provider: https://mainnet.base.org ==
+  anchor tx: from=0x1844d1f5fe42aff1cce6f776514fd40374079582 (== pinned anchor EOA: True)
+  self-transfer (to==from): True  value=0x0
+  calldata == signed root: True
+  anchor block: 53134983 timestamp=1793059313 (2026-10-27T00:01:53+00:00)
+  tx status: 0x1 (0x1 = success)
+  payment USDC Transfer #1: 0x9d42eba8868cfd38a50ba615ee0cf903f1bbece9 -> 0x23f713411c30bbd9a989c9cbc22eb0b55f7f7334  amount=2000  (to == signed payee: True)
+  payment: status=0x1  usdc_transfers=1  exactly_one_to_signed_payee_for_2000=True
+== Base provider: https://base-rpc.publicnode.com ==
+  anchor tx: from=0x1844d1f5fe42aff1cce6f776514fd40374079582 (== pinned anchor EOA: True)
+  self-transfer (to==from): True  value=0x0
+  calldata == signed root: True
+  anchor block: 53134983 timestamp=1793059313 (2026-10-27T00:01:53+00:00)
+  tx status: 0x1 (0x1 = success)
+  payment USDC Transfer #1: 0x9d42eba8868cfd38a50ba615ee0cf903f1bbece9 -> 0x23f713411c30bbd9a989c9cbc22eb0b55f7f7334  amount=2000  (to == signed payee: True)
+  payment: status=0x1  usdc_transfers=1  exactly_one_to_signed_payee_for_2000=True
+== Base provider: https://base.drpc.org ==
+  anchor tx: from=0x1844d1f5fe42aff1cce6f776514fd40374079582 (== pinned anchor EOA: True)
+  self-transfer (to==from): True  value=0x0
+  calldata == signed root: True
+  anchor block: 53134983 timestamp=1793059313 (2026-10-27T00:01:53+00:00)
+  tx status: 0x1 (0x1 = success)
+  payment USDC Transfer #1: 0x9d42eba8868cfd38a50ba615ee0cf903f1bbece9 -> 0x23f713411c30bbd9a989c9cbc22eb0b55f7f7334  amount=2000  (to == signed payee: True)
+  payment: status=0x1  usdc_transfers=1  exactly_one_to_signed_payee_for_2000=True
+== Solana provider: api.mainnet-beta.solana.com ==
+  slot: 461859546 (== pinned 461859546: True)  blockTime=1793059251
+  fee payer: 8ef3GtYNuQ6P2ANxLMPUXTAo9BhfJJqMx6cdDVh7JM4U (== pinned: True)
+  error: None
+  memo == signed head memo (pinned copy): True
+  memo: chit402:root:v2:global:2026-10-27:36213397e111e8bfd2086d592670925e5f8bb00141ce6088a8e5de617da4d2ee:4bd1f0441a5048c442f1453bfd06415de5a9533ec279e1c579d200211666bf94:2:dd20e39a39a225b7b3441bb7f61532c06562288b74ae5dc4dda015c48312f973:4:190a84631eb90fe925f8aa50e110db503e192662d3ebf6a44d567d8febc992c0
+done.

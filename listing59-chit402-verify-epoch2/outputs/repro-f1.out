@@ -1,0 +1,8 @@
+--- README claim (package/README.md) ---
+84:The CLI checks the tree head it fetches for the receipt. An embedded key still has to match the trusted-kid pin, or the kid has to be in a verified issuer-history entry. The head's signed `anchors.base.from` and `anchors.solana.fee_payer` must be on the anchor-wallet list. The chain sender and fee payer must be those wallets. `--version` prints `chit402-verify 0.4.6`. Flags other than `--issuer-history` and `--json` exit 1.
+--- observed output ---
+chit402-verify 0.4.11
+Supported receipt versions (signed payload, exact JSON numbers):
+  v: 11
+--- package.json version ---
+0.4.11

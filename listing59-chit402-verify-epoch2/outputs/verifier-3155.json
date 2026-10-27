@@ -1,0 +1,45 @@
+{
+  "result": "verified_public",
+  "exit_code": 0,
+  "reason": null,
+  "message": "The public attestation verified: settled amount, payee, tx, and log position. The link from this id to the log leaf rests on the issuer signature. The payer and fulfillment are not claimed.",
+  "next_step": null,
+  "receipt_id": "xfuel-3155b7d8-4315-44bc-bfdc-bf6b78ff2d15",
+  "display_id": "xfuel-3155b7d8-4315-44bc-bfdc-bf6b78ff2d15",
+  "payload_version": null,
+  "checks": {
+    "signature": "pass",
+    "key_window": "pass",
+    "payment_binding": "pass",
+    "log_inclusion": "pass",
+    "anchor": "pass",
+    "shape": "pass",
+    "payer": "not_claimed"
+  },
+  "scope": "public",
+  "public": {
+    "claims": "amount, payee, tx, log position",
+    "payer": "not_claimed",
+    "chain_from": "0x9d42…ece9",
+    "task_id_to_leaf": "issuer_signature"
+  },
+  "history": {
+    "source": "live",
+    "head_hash": "349d7bb495bad55aaa25d05ee91134575e6e7d300795b37b41f4bcf29af80f0e",
+    "entry_count": 1,
+    "as_of": null
+  },
+  "log": {
+    "leaf_index": 34,
+    "tree_size": 43,
+    "root": "36213397e111e8bfd2086d592670925e5f8bb00141ce6088a8e5de617da4d2ee",
+    "anchors": {
+      "base": "0x9ef64e3a2f00ac018041f5ff2b2d26144bf9a7c6dacfe050f805cdf3db5b4d8a",
+      "solana": "228pgHYNgwHPCyKDUi1N7342ixZpq3HMkny6x1H4KXA1jeEtBQvJaL8d4yNwVQQWNrns7zwBEUzuua3gDZ7yF3df"
+    }
+  },
+  "verifier": {
+    "name": "chit402-verify",
+    "version": "0.4.11"
+  }
+}

@@ -1,0 +1,103 @@
+== 0. Manifest pin ==
+  PASS  manifest receipt-3155.json  [68c9dca9a0a1…]
+  PASS  manifest receipt-shell-56e3.json  [66a6e7016011…]
+  PASS  manifest jwks.json  [6c439e8c3efd…]
+  PASS  manifest issuer-history.json  [b5ecff74a0c5…]
+  PASS  manifest tree-epoch.json  [7cf107216dfd…]
+  PASS  manifest tree-head.json  [147ece1fcac5…]
+  PASS  manifest inclusion-3155.json  [148be4ebedb0…]
+  PASS  manifest inclusion-56e3.json  [1133fd09b9b4…]
+  PASS  manifest inclusion-56e3-size34.json  [370424c856a6…]
+  PASS  manifest consistency-34-43.json  [98b7edf7a960…]
+== 1. JWS headers ==
+  PASS  head header  [{"alg":"ES256","typ":"chit402-tree-head+jwt","kid":"IvFpmC-vPhkY_v0vidsrWVT9uzlE5XWKZgAEOeJTq1Q"}]
+  PASS  attestation header  [{"alg":"ES256","typ":"chit402-public-receipt+jwt","kid":"IvFpmC-vPhkY_v0vidsrWVT9uzlE5XWKZgAEOeJTq1Q"}]
+  PASS  history header kid  [IvFpmC-vPhkY_v0vidsrWVT9uzlE5XWKZgAEOeJTq1Q]
+== 2. Key identity (RFC 7638, recomputed from coordinates) ==
+  PASS  JWKS holds exactly one key
+  PASS  JWKS thumbprint == kid  [IvFpmC-vPhkY_v0vidsrWVT9uzlE5XWKZgAEOeJTq1Q]
+  PASS  kid == round-1 pinned kid
+  PASS  history JWK == JWKS coordinates
+  PASS  history kid == JWKS kid
+== 3. ES256 signatures, offline (exact JWS byte strings) ==
+  PASS  tree-head JWS
+  PASS  public-attestation JWS
+  PASS  issuer-history JWS
+  PASS  epoch-record JWS
+== 4. Issuer history chain (JCS RFC 8785) ==
+  PASS  entry_hash == SHA-256(JCS(entry minus entry_hash))  [349d7bb495ba…]
+  PASS  head_hash == last entry_hash
+  PASS  single entry, prev_hash null, active, not revoked
+  PASS  signed payload: head_hash, entry_count, version, seq
+  PASS  key window covers attested_at and head published_at  [not_before=2026-09-04T08:52:05Z]
+== 5. Public attestation: canonical payload + claim allowlist ==
+  PASS  payload tag line  [chit402.public_receipt.v1]
+  PASS  claims are canonical (my JCS == their payload bytes)
+  PASS  top-level keys == allowlist
+  PASS  no payload_version/v
+  PASS  payment keys == allowlist
+  PASS  log keys == allowlist
+  PASS  iss == chit402
+  PASS  minute-precision issued_at <= attested_at  [2026-10-19T02:23:00.000Z <= 2026-10-19T02:24:00.000Z]
+== 6. Attestation claims vs the unsigned shell (field equality) ==
+  PASS  task_id == receipt_id (xfuel form)  [xfuel-3155b7d8-4315-44bc-bfdc-bf6b78ff2d15]
+  PASS  issued_at == shell.issued_at
+  PASS  payment.asset == shell.asset (case-insensitive)
+  PASS  payment.payee == shell.pay_to
+  PASS  payment.gross_amount == shell.amount_gross
+  PASS  payment.settled_amount == shell.amount_settled
+  PASS  payment.ref == base:<shell.payment_tx>  [base:0x731e4fdc70a8dba370c579c23e8520d2edcde052f28abaf3ed26c95c8603116f]
+  PASS  payment.rail == usdc
+  PASS  log.leaf_hash == shell.inclusion.leaf_hash
+  PASS  shell declares unsigned:true and no holder signature
+== 7. Inclusion: ompi-derived RFC 6962 path + fold ==
+  PASS  path length matches proof length  [5 vs 5]
+  PASS  every provided position label matches my index-derived side  [right,left,right,right,left]
+  PASS  fold reaches the signed head root  [36213397e111…]
+  PASS  head root == shell.signed_head.root == tree_size 43
+  PASS  endpoint proof == shell proof (same bytes served)
+  PASS  endpoint leaf_index/tree_size == signed log coordinates
+  PASS  leaf 30 path @43 derived  [right,left,left,left,left,right]
+  PASS  leaf 30 fold @43 reaches current root
+  PASS  leaf 30 path @34 derived  [right,left,left,left,left,right]
+  PASS  leaf 30 fold @34 reaches size-34 head  [b19c4d34d54c…]
+  PASS  size-34 head == round-1 anchored head (continuity)
+  PASS  shared node [0,31] agrees across leaf-30 and leaf-34 paths  [2e53dd841cdf…]
+  PASS  shared node [32,33] agrees across leaf-30@34 and leaf-34 paths  [850004bd8b6e…]
+== 8. Consistency proof 34 -> 43 (RFC 6962 §2.1.4 shape, my reimplementation) ==
+  PASS  first_root == size-34 head
+  PASS  second_root == current signed head
+  PASS  my fold of both leaves matches both roots (independent of the proof nodes)
+  PASS  rebuilt new root == second_root  [36213397e111…]
+  PASS  rebuilt old root == first_root  [b19c4d34d54c…]
+  PASS  proof fully consumed  [5/5]
+  PASS  proof node 0 == shared [0,31]
+  PASS  proof node 1 == shared [32,33]
+  PASS  proof node 3 == [36,39] from leaf-34 path
+  PASS  proof node 4 == [40,42] from leaf-34 path
+== 9. Epoch record and head chaining ==
+  PASS  epoch 1 closed, final_root == round-1 pinned EPOCH1_FINAL_ROOT  [dd20e39a39a2…]
+  PASS  epoch 2 open; head prev_epoch_root == epoch-1 final_root
+  PASS  head prev_epoch_size == epoch-1 final_size  [4 == 4]
+  PASS  head epoch == 2
+  PASS  head payload == tree-head endpoint payload (same signed object)
+  PASS  inclusion endpoint serves the same signed head JWS
+  PASS  head anchor_tx consistent, chain 8453, anchored  [0x9ef64e3a2f00ac01…]
+  PASS  anchor calldata == root  [0x36213397e111…]
+  PASS  anchor from == pinned anchor EOA
+  PASS  base anchor block_ts within clock_tolerance_s.base of published_at  [Δ=58.8s tol=300s]
+  PASS  solana memo == recomputed from signed head fields  [chit402:root:v2:global:2026-10-27:362133…]
+  PASS  solana fee_payer == pinned fee payer
+  PASS  epoch doc signed unlogged section present  [count=231]
+== 10. Falsifier self-tests (each MUST fail to verify) ==
+  PASS  F1 head root +1 nibble  [rejected as required]
+  PASS  F2 attestation settled_amount 2001  [rejected as required]
+  PASS  F3 attestation payee swapped  [rejected as required]
+  PASS  F4 proof position label flipped  [rejected as required]
+  PASS  F5 history entry_hash tampered  [rejected as required]
+  PASS  F6 head JWS signature byte corrupted  [rejected as required]
+  PASS  F7 leaf_hash swapped to old leaf  [rejected as required]
+  PASS  F8 kid label tampered (recomputed thumbprint must not match)  [rejected as required]
+== summary ==
+checks: 89, pass: 89, fail: 0
+ALL CHECKS PASS

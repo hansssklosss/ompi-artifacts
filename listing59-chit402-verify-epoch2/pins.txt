@@ -1,0 +1,6 @@
+0c1defae050771efff3b40e7555df2a4e4e45d2323c29179683522a718305120  npm/chit402-verify-0.4.11.tgz
+github.com/XFuel-Lab/chit402  commit d5aeefacd8b97cdccc46b7320abb79a0aa66799c (2026-10-27)
+github.com/hansssklosss/ompi-artifacts  commit 9ff6242 (round-1 artifact; pins and repro-b1.mjs source)
+public material fetch 2026-10-27T05:23:20Z  raw/manifest.sha256
+on-chain reads 2026-10-27T05:25-05:30Z  chain-tmp/ (three Base providers, one Solana provider)
+round-1 pins carried forward: kid IvFpmC-vPhkY_v0vidsrWVT9uzlE5XWKZgAEOeJTq1Q; EPOCH1_FINAL_ROOT dd20e39a39a225b7b3441bb7f61532c06562288b74ae5dc4dda015c48312f973; size-34 head b19c4d34d54c47be11525a8d02c6161d4b16b41d16eb5dbfc4a56eadf6e6ad6f; anchor EOA 0x1844d1f5fe42aff1cce6f776514fd40374079582; solana fee payer 8ef3GtYNuQ6P2ANxLMPUXTAo9BhfJJqMx6cdDVh7JM4U; USDC Base 0x833589fcd6edb6e08f4c7c32d4f71b54bda02913

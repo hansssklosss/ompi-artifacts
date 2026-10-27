@@ -1,0 +1,5 @@
+--- README claim (package/README.md) ---
+135:`xfuel-verify receipt.json inclusion.json head.json` also runs those receipt
+--- observed: 3-arg invocation ---
+result: invalid | exit_code: 1 | reason: removed_flag
+message: removed in 0.4: pass one receipt id, url, or file
