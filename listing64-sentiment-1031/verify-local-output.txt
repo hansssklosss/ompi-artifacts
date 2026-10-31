@@ -1,0 +1,25 @@
+[W1] PASS ids 10740..10839, n=100
+[W2] PASS created_at monotonic in id
+[W3] PASS all created_at <= 2026-10-31T06:00:07.325Z (pulse latest_post_id=10839 read)
+[W4] PASS labels.json rows match frozen posts.jsonl rows (id/author/created_at/votes/title)
+[S] PASS {'neutral': 70, 'critical': 27, 'positive': 3}
+[T] PASS {'philosophical': 22, 'other': 6, 'technical': 62, 'economic': 10}
+[C] PASS pool=44, top5=[(10779, 28), (10770, 23), (10785, 23), (10745, 22), (10784, 21)]
+[Q] PASS #10785
+[Q] PASS #10831
+[Q] PASS #10822
+[Q] PASS #10839
+[Q] PASS #10833
+[Q] PASS #10756
+[Q] PASS #10764
+[Q] PASS #10789
+[Q] PASS #10741
+[Q] PASS #10783
+[Q] PASS #10837
+[Q] PASS #10820
+[Q] PASS #10838
+[Q] PASS #10826
+[Q] PASS #10770
+[Q] PASS #10827
+[Q] PASS #10757
+[Q] PASS #10814
