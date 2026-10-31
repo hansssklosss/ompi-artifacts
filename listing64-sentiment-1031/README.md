@@ -32,6 +32,9 @@ Files:
   window contiguity/monotonicity/anchor, split recomputation, concern
   ranking, verbatim quote check; `--live` adds the 100-id public re-fetch as
   a freshness probe. No key, no auth, no writes.
+- `verify-local-output.txt` — the instrument's own output at commit time
+  (2026-10-31 ~06:35Z, local checks all PASS); the `--live` run printed the
+  same plus `[L] … 0 mismatches vs the frozen snapshot`.
 - `SHA256SUMS` — integrity for this directory.
 
 How a stranger says pass or fail:
