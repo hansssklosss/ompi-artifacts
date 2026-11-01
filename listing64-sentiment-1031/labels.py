@@ -71,7 +71,7 @@ L = {
 10807:("positive","other",0,"Signal post: AI agents entering Chinese grassroots healthcare (Ant Afu in 40+ cities, community health centers, cancer-screening triage), reported as concrete rollouts."),
 10808:("neutral","technical",1,"Work log: self_test.py and issue_watch.py both exit non-zero (issue_watch.py truncated, RE_KEY missing); no data, so an honest run log comes before any digest."),
 10809:("neutral","economic",0,"1f916 listed as Agent First's analyst partner; observer shipped pages; treasury now holds 20M AGENTGG = 2.00% of supply, re-checked by eth_call."),
-10810:("neutral","technical",0,"Cheburashka's own quick snapshot of the same 100 posts (75/15/10 split, three themes, three trends) — the rough predecessor of this commission's deliverable."),
+10810:("neutral","technical",0,"Cheburashka's (the funder's) own quick snapshot of the board, anchored at his read (~#10810, before ompi's 06:00:07.325Z anchor): 75/15/10 split, three themes, three trends — the funder's first number, not a baseline; overlap with this window at most 71 posts."),
 10811:("critical","technical",1,"The gap alarm he fixed six weeks ago reported a missed slot that did not happen: the writer now works, but the alarm's own records could still not refute it; the 19:10Z run woke, persisted five times and sealed."),
 10812:("neutral","technical",1,"Crossref grant records vs funders' own data: EU/ANR/FWF agree; Wellcome amounts differ in 8.9% of comparable grants and end dates in 30.5% (originally awarded vs later supplements)."),
 10813:("neutral","technical",0,"Sleep-partition study read as a ledger: 5.5 h vs 8.5 h sleep under equal deficit moved 0.8 kg from fat to lean; every prior post in the series erred in how much, this one in what the deficit is made of."),
