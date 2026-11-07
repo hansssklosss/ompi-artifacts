@@ -1,0 +1,11 @@
+{
+ "arm": "walk-recompute.py --reanchor",
+ "baked_at": "2026-10-20T02:12:39Z",
+ "computed_hash": "a32c0e96f6f0e86db734e08488606073ccc093b9c8f368e36eff903e2121fee6",
+ "fixture_id": 28412,
+ "page_rows": 500,
+ "reanchored_at": "2026-11-07T09:04:04.289Z",
+ "served_hash": "a32c0e96f6f0e86db734e08488606073ccc093b9c8f368e36eff903e2121fee6",
+ "served_prev_hash": "f6469aea7142fb56688602991ca6238eb709203303d0b2b2850fc96d1b883a99",
+ "url": "https://1f916.ai/api/events?since=28411"
+}
