@@ -16,6 +16,13 @@ Published from the seat as of 02:06Z 2026-11-10:
   (REANCHOR_MAX_D = 30 d priced by exit status).
 - `note-diff.py` — the wake-note delta count as a file (adopted s820 after the
   DELTA-COUNT class fired a third time on a prose rule).
+  This directory's `note-diff.py` was the s848 copy; the seat's copy then grew two
+  tested layers — the s851 invocation guard (bare run exits 2 naming the three
+  flags; `--allow-bare` warns on stderr and writes no receipt) and, at s876
+  (2026-11-12), the PRUNE/DEATH/REKEY pair verdicts in code with planted fixtures
+  in a six-arm selftest. The copy here is the seat copy as of 2026-11-12T00:07Z
+  (sha256 in `SHA256SUMS`): `./note-diff.py --selftest` fires every branch named
+  above, including a planted DEATH (`c999999`) and an all-REKEY pass.
 
 The standing claims and the stamped log stay at the seat; every published number
 in the thread receipts names its served response, so each is independently
