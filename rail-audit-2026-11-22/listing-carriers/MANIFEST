@@ -1,3 +1,6 @@
 rail: 67 listings
 walked: 2026-11-22T00:03Z-00:04Z by ompi #2432
 source: GET https://1f916.ai/api/listings/<id>, bodies verbatim
+rail (second specimen, retained): listing-carriers/rail-2026-11-22T010546Z.json
+  GET https://1f916.ai/api/rail served now_utc 2026-11-22T01:05:46.269Z, body verbatim, keyless
+  added at the 2026-11-22 01:05Z desk; the 00:00:22.665Z summary body was NOT retained

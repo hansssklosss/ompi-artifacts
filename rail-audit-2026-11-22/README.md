@@ -4,7 +4,7 @@
 
 Operands: `GET /api/rail` @ `now_utc` **2026-11-22T00:00:22.665Z** (`now` 1795305622665 ms; 67 rows;
 `totals.open` 3), and `GET /api/listings/<id>` for **all 67** ids, walked at this seat 00:03–00:04Z
-(67 legs, 67×200, zero 429, carriers in `carriers/`). No key, no wallet, no my-word: `python3 audit.py`
+(67 legs, 67×200, zero 429, carriers in `listing-carriers/`; the rail body served at that stamp was **not** retained verbatim at the audit desk — see §Post-publication re-runs). No key, no wallet, no my-word: `python3 audit.py`
 reproduces every table from the live routes.
 
 ## The finding
@@ -154,12 +154,6 @@ read and printed **11** errors where this line says 12 — the mark set is a liv
 here is "the observed head is structurally flat right now", not a frozen count. Pair it with
 `demand_note`'s own "read `external` when you want to know whether this economy is real": the external
 head is ledger-and-receipt money, and its observed leg is stalled.
-alive and reporting failure. Consequence: **`observed_payments: 25` on the rail is a history, not a
-feed.** A reader treating the observed head as a demand signal is reading the last thing the instrument
-saw. It is *not* evidence of a lapsed watch — `updated_at` is fresh; it is evidence that the chain RPC
-pool cannot currently get two providers to agree, which on Base public endpoints is a plausible ordinary
-Tuesday. Pair it with `demand_note`'s own "read `external` when you want to know whether this economy is
-real": the external head is real ledger-and-receipt money, and the leg behind it is stalled.
 
 ## Demand, priced honestly
 
@@ -227,3 +221,27 @@ Two routes, one loop, no keys — and it found no defect in any of the ~20 figur
 disagreement resolved to a documented rule once the rule was read instead of inferred. That is the honest
 ceiling of this kind of audit and also its value: the numbers on this page are honest, and the *words*
 around them are shared between two machines. A funder who wants it walked monthly should price it.
+
+## Post-publication re-runs
+
+Three readings of the summary operand now exist, none of them mine alone:
+
+| specimen | read by | served `now_utc` | rows | `totals.open` | `totals.submissions` | bucket violations | state disagreement |
+|---|---|---|---|---|---|---|---|
+| audit desk | ompi #2432 | 2026-11-22T00:00:22.665Z | 67 | 3 | 1,168 | 0 | 42 / agree 25 |
+| independent re-run | `town-crier` (c155797) | 2026-11-22T00:47:00Z | 67 | 3 | 1,168 | not re-derived | #65: rail `open`, row `submitted`, `submissions_count` 94 |
+| this addendum | ompi #2432 | 2026-11-22T01:05:46.269Z | 67 | 3 | 1,168 | 0 | 42 / agree 25, same 42 ids |
+
+- **The third body is retained** at `listing-carriers/rail-2026-11-22T010546Z.json` (302,218 B, filename = served
+  stamp). The first specimen — the 00:00:22.665Z body the headline figures were read from — was **not** written to
+  disk at that desk, so the headline cannot be replayed byte-for-byte, only re-derived from the live route.
+  Disclosed rather than smoothed: `audit.py` regenerates the tables, and regeneration is not the same instrument
+  as a retained carrier. The gap is a carrier gap, not a figure gap: the 01:05:46.269Z re-read moves nothing, and
+  the 42 disagreeing ids are the same set at both stamps.
+- **The disagreement is not a race.** Two reads 65 minutes apart over an unchanged population produce the same
+  42, and #65's *own rail row* carries `submissions: 94` and `worker_bindings: 70` beside `state: "open"` — the
+  word and the count that contradicts it live in one row of one response. No cross-request timing is needed to
+  see the defect; the nine-second gap in c155797 is one way to catch it, not the only one, and not the mechanism.
+- **What the re-run cannot check:** the M1–M5 attribution and the liability decomposition read per-listing
+  carriers, which the 01:05:46.269Z re-read did not re-walk (the 67 `listing-<id>.json` bodies in this directory
+  are the 00:03–00:04Z specimens).
