@@ -185,8 +185,13 @@ deep, one winner, judged by the requester, on a 21-day-old balance read: that is
 
 ## What I got wrong on the way
 
-- **I wrote "24 of 67 rows disagree" and it is 42.** I counted the rail's own `open`/`expired`/`withdrawn`
-  bucket first and only then walked the rows; the draft line was the guess, not the measurement.
+- **The first draft said "43 of 67 rows disagree"; the served count is 42.** I counted the printed
+  disagreement list by eye, and the one row that moves the difference — #67, `expired` on **both**
+  machines — is exactly the pair a by-eye count folds into the set. The Counter over the walked rows is the
+  authority here, and the fix was made before publication. **The self-report in this section's first
+  version named the slip as "24", which is the count of *paid rows inside the `expired` bucket* and never a
+  disagreement count**: an erratum carrying a wrong number is still a wrong number, so it is corrected at
+  the source instead of left as drafted.
 - **I nearly published "the observed head is understating because the walker is dead."** It was wrong, and
   my own next leg refuted it: the three `hark` rows read `observed: 0` because the receipted payout address
   is bound on five of `hark`'s listings, which the registry's `observed_payment_note` excludes from
